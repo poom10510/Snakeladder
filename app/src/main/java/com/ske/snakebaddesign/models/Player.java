@@ -10,9 +10,12 @@ public class Player {
     private int bordsize;
     private int maxSquare;
 
+    private String name;
+
     private BoardView boardView;
 
-    public Player(){
+    public Player(String name){
+        this.name=name;
         this.position=0;
 
     }
@@ -28,6 +31,9 @@ public class Player {
         if(this.position > maxSquare) {
             this.position = maxSquare - ( this.position - maxSquare);
         }
+        else if(this.position<0){
+            this.position = 0-(this.position);
+        }
     }
     public void setPoint(int value){
         this.position = value;
@@ -36,6 +42,7 @@ public class Player {
         this.position =0;
     }
     public int getPosition(){
-        return position;
+        return this.position;
     }
+    public String getName(){return this.name;}
 }

@@ -1,5 +1,7 @@
 package com.ske.snakebaddesign.models.SquareType;
 
+import android.graphics.Color;
+
 import com.ske.snakebaddesign.models.Player;
 
 /**

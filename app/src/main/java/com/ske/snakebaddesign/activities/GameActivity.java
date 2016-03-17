@@ -41,15 +41,28 @@ public class GameActivity extends AppCompatActivity {
     private void initComponents() {
         boardView = (BoardView) findViewById(R.id.board_view);
         buttonTakeTurn = (Button) findViewById(R.id.button_take_turn);
-        buttonRestart = (Button) findViewById(R.id.button_restart);
+        buttonTakeTurn.setOnClickListener(new View.OnClickListener(){
 
+            @Override
+            public void onClick(View v) {
+                takeTurn();
+            }
+        });
+        buttonRestart = (Button) findViewById(R.id.button_restart);
+        buttonRestart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetGame();
+            }
+        });
         textPlayerTurn = (TextView) findViewById(R.id.text_player_turn);
 
-        game= new Game(boardView,buttonTakeTurn,buttonRestart,textPlayerTurn,this);
+        game= new Game(boardView,textPlayerTurn,this);
     }
 
-    private void resetGame() {
-        game.resetGame();
-    }
+    private void resetGame() {game.resetGame();}
+    private void takeTurn() { game.takeTurn();}
+
+
 
 }

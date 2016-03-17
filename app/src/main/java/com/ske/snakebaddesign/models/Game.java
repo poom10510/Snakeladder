@@ -25,8 +25,6 @@ public class Game {
 
     private Board board;
 
-    private Button buttonTakeTurn;
-    private Button buttonRestart;
     private TextView textPlayerTurn;
 
     private AppCompatActivity app;
@@ -34,26 +32,12 @@ public class Game {
     
     private Die dice;
 
-    public Game(BoardView boardView,Button buttonTakeTurn,Button buttonRestart,TextView textPlayerTurn,AppCompatActivity app){
+    public Game(BoardView boardView,TextView textPlayerTurn,AppCompatActivity app){
 
         this.boardView=boardView;
-        this.p1 = new Player();
-        this.p2 = new Player();
+        this.p1 = new Player("Player 1");
+        this.p2 = new Player("Player 2");
 
-        this.buttonRestart=buttonRestart;
-        this.buttonRestart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resetGame();
-            }
-        });
-        this.buttonTakeTurn=buttonTakeTurn;
-        this.buttonTakeTurn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                takeTurn();
-            }
-        });
         this.textPlayerTurn=textPlayerTurn;
         this.app=app;
         dice = new Die();
@@ -63,7 +47,7 @@ public class Game {
 
     }
 
-    private void takeTurn() {
+    public void takeTurn() {
         final int value = dice.Toss();
         String title = "You rolled a die";
         String msg = "You got " + value;
@@ -80,20 +64,16 @@ public class Game {
    public void resetGame() {
         turn = 0;
        board.Restart();
-       textPlayerTurn.setText("Player 1's Turn");
+       String p = getCurrentPlayer(turn).getName()+"'s Turn";
+       textPlayerTurn.setText(p);
     }
 
 
     private void moveCurrentPiece(int value) {
-        if (turn % 2 == 0) {
-           p1.setPosition(value);
-            board.setChange(turn);
-            textPlayerTurn.setText("Player 2's Turn");
-        } else {
-            p2.setPosition(value);
-            board.setChange(turn);
-            textPlayerTurn.setText("Player 1's Turn");
-        }
+        getCurrentPlayer(turn).setPosition(value);
+        board.setChange(turn);
+        String p = getCurrentPlayer(turn+1).getName()+"'s Turn";
+        textPlayerTurn.setText(p);
         checkWin();
         turn++;
     }
@@ -116,9 +96,16 @@ public class Game {
         }
         displayDialog(title, msg, listener);
     }
+    public Player getCurrentPlayer(int turn){
+        if (turn % 2 == 0) {
+            return p1;
+        }
+        else{
+           return p2;
+        }
+    }
 
-
-    private void displayDialog(String title, String message, DialogInterface.OnClickListener listener) {
+    public void displayDialog(String title, String message, DialogInterface.OnClickListener listener) {
         AlertDialog alertDialog = new AlertDialog.Builder(app).create();
         alertDialog.setTitle(title);
         alertDialog.setMessage(message);
@@ -126,6 +113,7 @@ public class Game {
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", listener);
         alertDialog.show();
     }
+
 
 
 }
