@@ -5,7 +5,7 @@ import com.ske.snakebaddesign.models.Player;
 /**
  * Created by kitipoom on 15/3/2559.
  */
-public class SpecialSquare extends Squaretype {
+public class SpecialSquare implements Squaretype {
 
     public SpecialSquare(){
 

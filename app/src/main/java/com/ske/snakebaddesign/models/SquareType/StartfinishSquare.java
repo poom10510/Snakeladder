@@ -5,7 +5,7 @@ import com.ske.snakebaddesign.models.Player;
 /**
  * Created by kitipoom on 17/3/2559.
  */
-public class StartfinishSquare extends Squaretype {
+public class StartfinishSquare implements Squaretype {
     @Override
     public void run(Player p) {
         return;
