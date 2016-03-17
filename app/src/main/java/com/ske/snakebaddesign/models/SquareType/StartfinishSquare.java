@@ -3,21 +3,16 @@ package com.ske.snakebaddesign.models.SquareType;
 import com.ske.snakebaddesign.models.Player;
 
 /**
- * Created by kitipoom on 15/3/2559.
+ * Created by kitipoom on 17/3/2559.
  */
-public class SpecialSquare extends Squaretype {
-
-    public SpecialSquare(){
-
-    }
+public class StartfinishSquare extends Squaretype {
     @Override
     public void run(Player p) {
-        p.setPoint(0);
         return;
     }
 
     @Override
     public int getColor() {
-        return 2;
+        return 3;
     }
 }

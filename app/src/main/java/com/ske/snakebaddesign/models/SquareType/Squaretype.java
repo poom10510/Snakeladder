@@ -10,4 +10,7 @@ import com.ske.snakebaddesign.models.Player;
         public void run(Player p){
 
         }
+        public int getColor(){
+           return 0;
+        }
 }

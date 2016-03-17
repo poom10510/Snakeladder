@@ -15,4 +15,9 @@ public class NormalSquare extends Squaretype {
 
         return;
     }
+
+    @Override
+    public int getColor() {
+        return 1;
+    }
 }

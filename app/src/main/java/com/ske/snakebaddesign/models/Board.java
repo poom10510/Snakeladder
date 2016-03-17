@@ -22,6 +22,7 @@ public class Board {
         p1.setBordsize(boardSize);
         p2.setBordsize(boardSize);
         square = new Square(p1,p2,boardSize);
+        this.boardView.setSquarelist(square.getListsquare());
     }
     public void Restart(){
         this.p1.Reset();
@@ -37,5 +38,8 @@ public class Board {
         else {
             boardView.setP2Position(p2.getPosition());
         }
+    }
+    public Square getSquare(){
+        return square;
     }
 }

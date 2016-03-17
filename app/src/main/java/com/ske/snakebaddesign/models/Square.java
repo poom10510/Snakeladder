@@ -3,6 +3,7 @@ package com.ske.snakebaddesign.models;
 import com.ske.snakebaddesign.models.SquareType.NormalSquare;
 import com.ske.snakebaddesign.models.SquareType.SpecialSquare;
 import com.ske.snakebaddesign.models.SquareType.Squaretype;
+import com.ske.snakebaddesign.models.SquareType.StartfinishSquare;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,9 @@ public class Square {
             if(i==10){
                 listsquare.add(new SpecialSquare());
             }
+            else if(i==0||i==boardSize*boardSize-1){
+                listsquare.add(new StartfinishSquare());
+            }
             else{
                 listsquare.add(new NormalSquare());
             }
@@ -42,5 +46,8 @@ public class Square {
         else {
             listsquare.get(p2.getPosition()).run(p2);
         }
+    }
+    public List<Squaretype> getListsquare(){
+        return listsquare;
     }
 }

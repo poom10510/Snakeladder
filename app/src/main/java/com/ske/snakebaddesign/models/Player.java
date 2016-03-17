@@ -11,6 +11,7 @@ public class Player {
     private int maxSquare;
 
     private BoardView boardView;
+
     public Player(){
         this.position=0;
 
